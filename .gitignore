@@ -1,0 +1,25 @@
+node_modules
+dist
+coverage
+*.local
+.env
+.env.*
+!.env.example
+
+# Playwright
+playwright-report
+test-results
+
+# Logs
+*.log
+pnpm-debug.log*
+
+# Editors / OS
+.idea
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+*.Zone.Identifier
+
+# TanStack
+.tanstack
