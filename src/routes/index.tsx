@@ -1,25 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: Home,
 });
 
-function Index() {
-  const [count, setCount] = useState(0);
-
+function Home() {
   return (
-    <>
-      <h1>Hello world! {count}</h1>
-      <Button
-        onClick={() => {
-          setCount((c) => c + 1);
-        }}
-      >
-        Increment
-      </Button>
-    </>
+    <main className="mx-auto max-w-2xl p-8">
+      <h1 className="text-3xl font-semibold">MediVault</h1>
+      <p className="mt-2 text-muted-foreground">
+        Track and compare your blood test results over time.
+      </p>
+    </main>
   );
 }

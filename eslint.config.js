@@ -98,8 +98,16 @@ export default defineConfig([
         { type: "hooks", pattern: "src/hooks" },
         { type: "lib", pattern: "src/lib" },
       ],
-      // main.tsx is the composition root and may import anything.
-      "boundaries/ignore": ["src/main.tsx", "src/routeTree.gen.ts"],
+      // main.tsx + app.tsx are the composition root and may import anything;
+      // test setup and ambient type declarations sit outside the layers.
+      "boundaries/ignore": [
+        "src/main.tsx",
+        "src/app.tsx",
+        "src/app.test.tsx",
+        "src/routeTree.gen.ts",
+        "src/vite-env.d.ts",
+        "src/test/**",
+      ],
     },
     rules: {
       "boundaries/no-unknown-files": "error",

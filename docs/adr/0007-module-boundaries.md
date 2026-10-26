@@ -21,7 +21,7 @@ Organise `src/` into layers. Each layer may only import from itself or the layer
 | `hooks`      | `src/hooks/**`                | `hooks`, `lib`                                      |
 | `lib`        | `src/lib/**`                  | `lib`                                               |
 
-`src/main.tsx` is the composition root and is exempt. `boundaries/no-unknown-files` fails any file under `src/` that doesn't belong to a layer.
+`src/main.tsx` and `src/app.tsx` (providers + router) are the composition root and are exempt, as are their tests, test setup (`src/test/**`) and ambient declarations. Tests colocated inside a layer follow that layer's rules. `boundaries/no-unknown-files` fails any file under `src/` that doesn't belong to a layer.
 
 ## Consequences
 

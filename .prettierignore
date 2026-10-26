@@ -3,3 +3,5 @@ coverage
 .tanstack
 pnpm-lock.yaml
 src/routeTree.gen.ts
+playwright-report
+test-results

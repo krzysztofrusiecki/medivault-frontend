@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Env
+.env
+
+# TanStack Router plugin cache
+.tanstack
+
+# Test output
+coverage
+playwright-report
+test-results
+blob-report
