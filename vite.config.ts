@@ -21,6 +21,11 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+  // Matches medivault-backend's CORS_ORIGIN default; strict so a busy port fails loudly instead of hitting CORS errors.
+  server: {
+    port: 4200,
+    strictPort: true,
+  },
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],

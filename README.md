@@ -21,7 +21,7 @@ cp .env.example .env   # optional; defaults work with a local backend
 
 | Command             | What it does                                            |
 | ------------------- | ------------------------------------------------------- |
-| `pnpm dev`          | Start the dev server on http://localhost:5173           |
+| `pnpm dev`          | Start the dev server on http://localhost:4200           |
 | `pnpm build`        | Typecheck and produce a static bundle in `dist/`        |
 | `pnpm preview`      | Serve the production build locally                      |
 | `pnpm lint`         | Run ESLint (zero warnings allowed)                      |
