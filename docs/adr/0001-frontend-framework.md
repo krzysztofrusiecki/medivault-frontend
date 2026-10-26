@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-MediVault Frontend is an authenticated dashboard (results, filtering, graphs, admin/lab tooling) sitting entirely behind login, talking to a separate NestJS API. It has no public, indexable pages. Next.js's main differentiators — SSR/SSG for SEO, RSC for cutting client JS on public content — don't apply to this shape of app. TanStack Query, already chosen for server state, is itself a client-fetching pattern, so pairing it with Next would mostly use Next's routing conventions without its actual strengths — close to a prior Next.js project (Pages Router, fully client-side) that didn't exercise SSR/SSG either.
+MediVault Frontend is an authenticated dashboard (results, filtering, graphs, admin/lab tooling) sitting entirely behind login, talking to a separate NestJS API. It has no public, indexable pages. Next.js's main differentiators — SSR/SSG for SEO, RSC for cutting client JS on public content — don't apply to this shape of app. TanStack Query, already chosen for server state, is itself a client-fetching pattern, so pairing it with Next would mostly use Next's routing conventions without its actual strengths.
 
 Given a medium timeline and an already broad v1 scope (three roles, full unit/integration/e2e test pyramid), minimizing framework overhead matters.
 
