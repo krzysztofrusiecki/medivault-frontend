@@ -13,9 +13,19 @@ pnpm install
 cp .env.example .env   # optional; defaults work with a local backend
 ```
 
-| Variable            | Default                     | Description                             |
-| ------------------- | --------------------------- | --------------------------------------- |
-| `VITE_API_BASE_URL` | `http://localhost:3000/api` | Base URL of the `medivault-backend` API |
+| Variable           | Default                 | Description                                                    |
+| ------------------ | ----------------------- | -------------------------------------------------------------- |
+| `API_PROXY_TARGET` | `http://localhost:3000` | Backend that `pnpm dev` and `pnpm preview` forward `/api/*` to |
+
+### Talking to the backend
+
+The app always calls `/api` on its own origin, and something in front of it forwards those requests to `medivault-backend` ([ADR-0008](docs/adr/0008-same-origin-api-via-proxy.md)). This keeps the refresh cookie same-site in every setup. `API_PROXY_TARGET` is read by Vite's config only and never ends up in the client bundle.
+
+| Setup                          | How `/api` reaches the backend                                                                                             |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Local frontend → local backend | Default. Vite proxies to `http://localhost:3000`.                                                                          |
+| Local frontend → prod backend  | `API_PROXY_TARGET=https://<prod-api> pnpm dev`. This puts real health data on your machine, so don't make it your default. |
+| Production                     | The static host's rewrite rule (`/api/*` → backend), configured at deploy time.                                            |
 
 ## Scripts
 
@@ -46,8 +56,8 @@ src/
   routes/      File-based routes (TanStack Router)
   features/    One folder per feature, added by later topics
   components/  Shared components (shadcn/ui components live in components/ui)
-  lib/         Utilities, env access, query client (lib/auth: reserved for the in-memory token module, ADR-0002)
-  test/        Vitest setup
+  lib/         Utilities, API base URL, query client (lib/auth: reserved for the in-memory token module, ADR-0002)
+  test/        Vitest setup and the MSW server (fake the backend per test with `server.use(...)`)
 e2e/           Playwright tests
 ```
 
