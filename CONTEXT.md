@@ -23,6 +23,7 @@ Inherited from `medivault-backend`'s `CONTEXT.md` — use these terms exactly, d
 New term, owned by this repo:
 
 - **ResultStatus** — the derived `LOW` / `NORMAL` / `HIGH` / `NO_REFERENCE_RANGE` classification for a TestResult, computed client-side against the ReferenceRanges available for its Analyte. See [ADR-0006](docs/adr/0006-reference-range-status-computation.md).
+- **Idle sign-out** — the client ending a Session in every open tab after 30 minutes without user input, regardless of whether its tokens are still valid. See [ADR-0002](docs/adr/0002-auth-token-storage.md). Distinct from a Session _ending_ server-side (refresh token expired, revoked, or reused). Avoid: "session timeout", "auto-logout".
 
 ## Roles in scope
 
@@ -30,7 +31,7 @@ All three backend roles are in scope for v1: `USER`, `LAB_ADMIN`, `SUPER_ADMIN`.
 
 ## Architecture decisions
 
-See `docs/adr/` — framework and routing choice, auth token storage, type-safety strategy, UI component system, role scope, and reference-range status computation.
+See `docs/adr/` — framework and routing choice, auth token storage, type-safety strategy, UI component system, role scope, reference-range status computation, module boundaries, and same-origin API routing.
 
 Deployment is deliberately **not** an architectural decision here: the app should build and deploy to any static host without platform-specific coupling. Vercel is today's pick for convenience, not a commitment.
 
